@@ -1,6 +1,5 @@
-# Minimal PHP with MySQL support in volume pointing outside the image.
-# Intended for development where changing the PHP source directory often
-# is required.
+# Minimal PHP with MySQL support. Script files in volume pointing outside the image.
+# Intended for development where changing the PHP source directory often is required.
 version: '3'
 services:
     app:
