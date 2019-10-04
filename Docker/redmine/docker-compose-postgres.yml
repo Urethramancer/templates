@@ -9,7 +9,6 @@ services:
             - './pgdata:/var/lib/postgresql/data'
 
     redmine:
-        build: ./
         image: redmine:latest
         restart: always
         depends_on:
@@ -21,13 +20,3 @@ services:
             - './files:/usr/src/redmine/files'
             - './plugins:/usr/src/redmine/plugins'
             - './themes:/usr/src/redmine/public/themes'
-
-volumes:
-    pgdata:
-        driver: local
-    files:
-        driver: local
-    plugins:
-        driver: local
-    themes:
-        driver: local
