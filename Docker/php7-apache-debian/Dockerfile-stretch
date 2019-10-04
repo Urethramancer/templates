@@ -1,0 +1,5 @@
+# Official PHP+Apache image.
+FROM php:7-apache-stretch
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y libpng-dev
+RUN docker-php-ext-install gd pdo pdo_mysql bcmath

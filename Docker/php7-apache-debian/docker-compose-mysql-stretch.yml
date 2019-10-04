@@ -1,0 +1,20 @@
+# Minimal PHP with MySQL support in volume pointing outside the image.
+# Intended for development where changing the PHP source directory often
+# is required.
+version: '3'
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile-stretch
+        ports:
+            - '8080:80'
+        depends_on:
+            - db
+        volumes:
+            - ./{WWW_PATH}:/var/www/html
+
+    db:
+        image: mysql:latest
+        entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
+        env_file: dbenv
