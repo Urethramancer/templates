@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+    postgres-red:
+        image: postgres:latest
+        restart: always
+        env_file: dbenv
+        volumes:
+            - './pgdata:/var/lib/postgresql/data'
+
+    redmine:
+        build: ./
+        image: redmine:latest
+        restart: always
+        depends_on:
+            - postgres-red
+        env_file: env
+        ports:
+            - '3000:3000'
+        volumes:
+            - './files:/usr/src/redmine/files'
+            - './plugins:/usr/src/redmine/plugins'
+            - './themes:/usr/src/redmine/public/themes'
+
+volumes:
+    pgdata:
+        driver: local
+    files:
+        driver: local
+    plugins:
+        driver: local
+    themes:
+        driver: local
