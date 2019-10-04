@@ -2,14 +2,14 @@ version: '3'
 
 services:
     postgres-red:
-        image: postgres:latest
+        image: postgres:12.0-alpine
         restart: always
         env_file: dbenv
         volumes:
             - './pgdata:/var/lib/postgresql/data'
 
     redmine:
-        image: redmine:latest
+        image: redmine:3.4-alpine
         restart: always
         depends_on:
             - postgres-red
