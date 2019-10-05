@@ -1,6 +1,12 @@
 # Templates
 A collection of basic templates to quickly make Docker images.
 
+## Go
+Go configurations.
+
+### go-minimal
+The bare minimum required to build and run a Go app. Required packages are downloaded, and a tiny image is built. Hello World will be around 800k.
+
 ## PHP
 PHP configurations.
 
