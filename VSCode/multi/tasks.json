@@ -1,0 +1,130 @@
+{
+	"version": "2.0.0",
+	"type": "shell",
+	"problemMatcher": [
+		"$go"
+	],
+	"tasks": [
+		{
+			"label": "Build (Release)",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"client-release",
+				"server-release"
+			]
+		},
+		{
+			"label": "Build (Debug)",
+			"group": {
+				"kind": "build"
+			},
+			"dependsOn": [
+				"client-debug",
+				"server-debug"
+			]
+		},
+		{
+			"label": "go mod tidy",
+			"type": "shell",
+			"command": "go mod tidy",
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			},
+			"problemMatcher": [
+				"$go"
+			]
+		},
+		{
+			"label": "client-release",
+			"command": "go",
+			"args": [
+				"build",
+				"-ldflags",
+				"\"-w -s\""
+			],
+			"options": {
+				"cwd": "${workspaceRoot}/cmd/client"
+			},
+			"group": {
+				"kind": "build"
+			},
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": false
+			}
+		},
+		{
+			"label": "server-release",
+			"command": "go",
+			"args": [
+				"build",
+				"-ldflags",
+				"\"-w -s\""
+			],
+			"options": {
+				"cwd": "${workspaceRoot}/cmd/server"
+			},
+			"group": {
+				"kind": "build"
+			},
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": false
+			}
+		},
+		{
+			"label": "client-debug",
+			"command": "go",
+			"args": [
+				"build"
+			],
+			"options": {
+				"cwd": "${workspaceRoot}/cmd/client"
+			},
+			"group": "build",
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
+			}
+		},
+		{
+			"label": "server-debug",
+			"command": "go",
+			"args": [
+				"build"
+			],
+			"options": {
+				"cwd": "${workspaceRoot}/cmd/server"
+			},
+			"group": "build",
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
+			}
+		}
+	]
+}
